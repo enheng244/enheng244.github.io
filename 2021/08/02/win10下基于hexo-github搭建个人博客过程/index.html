@@ -203,70 +203,46 @@
 <p>这个博客就是基于hexo+github所搭建的网站，在此先记录一下搭建的过程</p>
 </blockquote>
 <span id="more"></span>
-
-
-
 <h3 id="Step1-安装nodejs"><a href="#Step1-安装nodejs" class="headerlink" title="Step1 安装nodejs"></a>Step1 安装nodejs</h3><p>在<a target="_blank" rel="noopener" href="https://nodejs.org/">https://nodejs.org/</a>上下载14.17.4LTS（我搭建时的最新版本）</p>
 <p>下载完后直接无脑下一步安装就好。（亲测没必要装在c盘）</p>
-<p>安装完之后，win+R调出搜索，输入cmd，打开命令行，分别输入</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
-
+<p>安装完之后，win+R调出搜索，输入cmd，打开命令行，分别输入<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-
 <p>查看是否成功安装。</p>
 <h3 id="Step2-安装cnpm"><a href="#Step2-安装cnpm" class="headerlink" title="Step2 安装cnpm"></a>Step2 安装cnpm</h3><p>在命令行中输入</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https:<span class="comment">//registry.npm.taobao.org</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>安装完之后输入</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm -v</span><br></pre></td></tr></table></figure>
-
+<p>安装完之后输入<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm -v</span><br></pre></td></tr></table></figure></p>
 <p>查看是否成功安装</p>
 <h3 id="Step3-用cnpm安装hexo框架"><a href="#Step3-用cnpm安装hexo框架" class="headerlink" title="Step3 用cnpm安装hexo框架"></a>Step3 用cnpm安装hexo框架</h3><p>在命令行中输入</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-
-
 <p>安装完之后输入</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
-
 <p>查看是否成功安装</p>
 <h3 id="Step4-在任意位置建立空文件夹"><a href="#Step4-在任意位置建立空文件夹" class="headerlink" title="Step4 在任意位置建立空文件夹"></a>Step4 在任意位置建立空文件夹</h3><p>这个文件夹用于存放博客的所有内容。e.g.我的路径是E:\study\blog\</p>
 <h3 id="Step5-进入刚刚创建的文件夹"><a href="#Step5-进入刚刚创建的文件夹" class="headerlink" title="Step5 进入刚刚创建的文件夹"></a>Step5 进入刚刚创建的文件夹</h3><p>在空白处按住shift单击右键打开PowerShell窗口。在命令行中输入</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-
 <p>这里注意由于我的路径是在E盘中，所以并没有管理员权限的问题，如果在c盘可能会有（我没自己试过）</p>
 <p>初始化后进入文件夹会发现出现很多文件。</p>
 <h3 id="Step6-启动hexo"><a href="#Step6-启动hexo" class="headerlink" title="Step6 启动hexo"></a>Step6 启动hexo</h3><p>还是在blog文件夹下打开PowerShell窗口。在命令行中输入</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p>会出现提示<a target="_blank" rel="noopener" href="http://localhost:4000/%EF%BC%8C%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5%E8%BF%99%E4%B8%AA%E7%BD%91%E5%9D%80%E8%BF%9B%E5%85%A5%E5%8D%9A%E5%AE%A2%E3%80%82Ctrl+c%E9%80%80%E5%87%BA">http://localhost:4000/，在浏览器输入这个网址进入博客。Ctrl+c退出</a></p>
+<p>会出现提示<a target="_blank" rel="noopener" href="http://localhost:4000/，在浏览器输入这个网址进入博客。Ctrl+c退出">http://localhost:4000/，在浏览器输入这个网址进入博客。Ctrl+c退出</a></p>
 <h3 id="Step7-创建文章"><a href="#Step7-创建文章" class="headerlink" title="Step7 创建文章"></a>Step7 创建文章</h3><p>还是在blog文件夹下打开PowerShell窗口。在命令行中输入</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n <span class="string">&#x27;文章名字&#x27;</span></span><br></pre></td></tr></table></figure>
-
 <p>之后进入/source/posts，发现新出现了一个 文章名字.md 的文件。直接txt格式打开用markdown格式写文章就行。</p>
 <h3 id="Step8-上传文章"><a href="#Step8-上传文章" class="headerlink" title="Step8 上传文章"></a>Step8 上传文章</h3><p>返回blog文件夹下打开PowerShell窗口。在命令行中输入</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p>再从<a target="_blank" rel="noopener" href="http://localhost:4000/%E8%BF%9B%E5%85%A5%E5%8D%9A%E5%AE%A2%EF%BC%8C%E5%8F%91%E7%8E%B0%E6%96%87%E7%AB%A0%E5%B7%B2%E7%BB%8F%E4%B8%8A%E4%BC%A0%E3%80%82">http://localhost:4000/进入博客，发现文章已经上传。</a></p>
+<p>再从<a target="_blank" rel="noopener" href="http://localhost:4000/进入博客，发现文章已经上传。">http://localhost:4000/进入博客，发现文章已经上传。</a></p>
 <h3 id="Step9-将博客部署到github"><a href="#Step9-将博客部署到github" class="headerlink" title="Step9 将博客部署到github"></a>Step9 将博客部署到github</h3><p><a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a>登陆自己的github账号，点右上角的+，New repository</p>
 <p>在Repository name输入 自己的github名.github.io</p>
 <p>比如我的github叫enheng244，我就是enheng244.github.io</p>
 <p>然后Create repository</p>
 <p>在blog文件夹下打开PowerShell窗口。在命令行中输入</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
-
-
-
 <p>安装完之后，在blog文件下找到_config.yml，进入后在最底部找到#Deployment，配置如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https:<span class="comment">//hexo.io/docs/one-command-deployment</span></span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https:<span class="comment">//github.com/enheng244/enheng244.github.io.git</span></span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-
 <p>repo行换成自己的github地址即可。</p>
 <h3 id="Step10-进入博客"><a href="#Step10-进入博客" class="headerlink" title="Step10 进入博客"></a>Step10 进入博客</h3><p>此时在浏览器输入enheng244.github.io即可访问自己的博客</p>
 <h3 id="Step11-换主题"><a href="#Step11-换主题" class="headerlink" title="Step11 换主题"></a>Step11 换主题</h3><p>在github上或其他地方可以找到很多主题，可以按照其中的文档去换主题</p>
 <h3 id="Step12-常用命令"><a href="#Step12-常用命令" class="headerlink" title="Step12 常用命令"></a>Step12 常用命令</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s  </span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -397,7 +373,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -221,24 +221,20 @@
 <p>注释 标识符 数据类型 类型转换 变量 常量 变量命名规范 运算法 包机制 JavaDoc</p>
 </blockquote>
 <span id="more"></span>
-
 <h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p><strong>单行注释</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//单行注释</span></span><br></pre></td></tr></table></figure>
-
 <p><strong>多行注释</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">多行注释</span></span><br><span class="line"><span class="comment">多行注释</span></span><br><span class="line"><span class="comment">多行注释</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
 <p><strong>文档注释（JavaDoc）</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *<span class="doctag">@Description</span> HelloWorld</span></span><br><span class="line"><span class="comment"> *<span class="doctag">@Author</span> RW</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2><p>类名，方法名，变量名都是标识符</p>
-<p>所有标识符必须以A-Z, a-z, $, _<em><strong>开始</strong></em></p>
+<p>所有标识符必须以A-Z, a-z, $, _<strong><em>开始</em></strong></p>
 <p>首字符之后的可以是A-Z, a-z, $, _，数字</p>
 <p>不能用关键字</p>
-<p>标识符<em><strong>大小写敏感</strong></em></p>
-<p><em><strong>可以用中文，但是不建议</strong></em></p>
+<p>标识符<strong><em>大小写敏感</em></strong></p>
+<p><strong><em>可以用中文，但是不建议</em></strong></p>
 <p><strong>关键字</strong></p>
-<p><img src="/2021/08/02/java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1.png" alt="关键字"></p>
+<p><img src="1.png" alt="关键字"></p>
 <p>String不是关键字，是类</p>
 <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>java，c++是强类型语言（所有变量必须先定义后使用）      安全性高，速度慢</p>
 <p>js是弱类型语言</p>
@@ -272,22 +268,17 @@
 <p>十六进制 0x</p>
 <p><strong>浮点数（float double）</strong>是离散的，有舍入误差，接近但不等于</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> f = <span class="number">0.1f</span>;<span class="comment">//0.1</span></span><br><span class="line"><span class="keyword">double</span> d = <span class="number">1.0</span>/<span class="number">10</span>;<span class="comment">//0,1</span></span><br><span class="line">System.out.println(f==d); <span class="comment">//会输出false</span></span><br></pre></td></tr></table></figure>
-
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> d1 = <span class="number">2313131323123113f</span>;</span><br><span class="line"><span class="keyword">float</span> d2 = d1 + <span class="number">1</span>;</span><br><span class="line">System.out.println(d1==d2); <span class="comment">//会输出true</span></span><br></pre></td></tr></table></figure>
-
 <p>因此，最好避免使用浮点数进行比较</p>
 <p>所有的<strong>字符</strong>本质还是数字</p>
 <p>编码 Unicode 2字节 0-65536</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> c = <span class="string">&#x27;\u0061&#x27;</span>; <span class="comment">//c输出‘a&#x27;</span></span><br></pre></td></tr></table></figure>
-
-
-
 <p><strong>转义字符</strong></p>
 <p>\t 制表符</p>
 <p>\n 换行</p>
 <p>…….</p>
-<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>低—————————————————————&gt;高</p>
-<p>byte,short,char –&gt; int  –&gt; long –&gt; float –&gt; double</p>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>低———————————————————————————————-&gt;高</p>
+<p>byte,short,char —&gt; int  —&gt; long —&gt; float —&gt; double</p>
 <p>从低到高，占的位越来越多，且小数高于整数</p>
 <p><strong>强制转换 高-低</strong> (类型)变量名   e.g.  int(100)</p>
 <p><strong>自动转换 低-高</strong></p>
@@ -313,18 +304,14 @@
 <li>局部变量：必须声明和初始化值 不会自动初始化</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">demo</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">double</span> salary = <span class="number">2500</span>;<span class="comment">//类变量</span></span><br><span class="line">    String str = <span class="string">&#x27;abc&#x27;</span>;<span class="comment">//实例变量</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    	<span class="keyword">int</span> a = <span class="number">0</span>;<span class="comment">//局部变量    </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 <h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>初始化后不能再改值</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> PI = <span class="number">3.14</span>;<span class="comment">//常量名一般使用大写字符</span></span><br></pre></td></tr></table></figure>
-
 <p>tip：public，final和static都是修饰符，不存在先后顺序</p>
 <h2 id="变量命名规范"><a href="#变量命名规范" class="headerlink" title="变量命名规范"></a>变量命名规范</h2><p>类成员变量，局部变量：首字母小写，驼峰</p>
 <p>常量：大写字母和下划线 MAX_VALUE</p>
 <p>类名：首字母大写，驼峰</p>
 <p>方法名：首字母小写，驼峰 run()</p>
-<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>算数运算符：+ - * / % ++ – (++a是先自增在赋值，a++是先赋值再自增)</p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>算数运算符：+ - * / % ++ — (++a是先自增在赋值，a++是先赋值再自增)</p>
 <p>赋值运算符：=</p>
 <p>关系运算符：&gt;, &lt;, &gt;=, &lt;=, ==, !=, instanceof</p>
 <p>逻辑运算符（与或非）：&amp;&amp; || !</p>
@@ -338,9 +325,6 @@
 <p>条件运算符： ? :</p>
 <p>扩展赋值运算符： +=, -=, *=, /=</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> a = <span class="number">23123123</span>;</span><br><span class="line"><span class="keyword">int</span> b= <span class="number">123</span>;</span><br><span class="line"><span class="keyword">short</span> c = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">byte</span> d = <span class="number">8</span>;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">a+b+c+d结果是Long类型</span></span><br><span class="line"><span class="comment">b+c+d结果是int类型</span></span><br><span class="line"><span class="comment">c+d结果是int类型</span></span><br><span class="line"><span class="comment">因为有long就是long，没有long就是int</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-
-
 <h2 id="包机制"><a href="#包机制" class="headerlink" title="包机制"></a>包机制</h2><p>本质就是文件夹</p>
 <p>格式是package com.baidu.baike; 且必须在前上面</p>
 <p>一般利用公司域名倒置作为包名</p>
@@ -491,7 +475,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

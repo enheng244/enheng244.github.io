@@ -209,11 +209,9 @@
 <p>Scanner对象 顺序结构 选择结构 循环结构</p>
 </blockquote>
 <span id="more"></span>
-
 <h2 id="Scanner对象"><a href="#Scanner对象" class="headerlink" title="Scanner对象"></a>Scanner对象</h2><p>java.util.Scanner Java5的新特性，可以通过Scanner类来获取用户的输入</p>
 <p>基本语法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Scanner s = <span class="keyword">new</span> Scanner(System.in);</span><br></pre></td></tr></table></figure>
-
 <p>通过next()和nextLine()获取字符串</p>
 <p>通过hasNext()和hasNextLine()判断有没有输入</p>
 <p>属于io流如果不关闭会一直占用资源，记得scanner.close()</p>
@@ -234,14 +232,16 @@
 <h2 id="顺序结构"><a href="#顺序结构" class="headerlink" title="顺序结构"></a>顺序结构</h2><p>最基本的默认结构，从上到下执行</p>
 <h2 id="选择结构"><a href="#选择结构" class="headerlink" title="选择结构"></a>选择结构</h2><ul>
 <li><p>if单选择结构</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>()&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>()&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>if双选择结构</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>()&#123;</span><br><span class="line">    </span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>()&#123;</span><br><span class="line">    </span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>if多选择结构</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>()&#123;</span><br><span class="line">    </span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>()&#123;</span><br><span class="line">    </span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>()&#123;</span><br><span class="line">    </span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>()&#123;</span><br><span class="line">    </span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>()&#123;</span><br><span class="line">    </span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>()&#123;</span><br><span class="line">    </span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>switch多选择结构</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>()&#123;</span><br><span class="line">    <span class="keyword">case</span> value1:</span><br><span class="line">    	<span class="comment">//语句</span></span><br><span class="line">    	<span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> value2:</span><br><span class="line">    	<span class="comment">//语句</span></span><br><span class="line">    	<span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="comment">//语句</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>switch语句中的变量类型可以是byte, short, int, char, String(从Java SE 7开始支持)</p>
 <p>case标签必须为字符串常量或者字面量</p>
 <p>case没有break把后面的所有语句全执行</p>
@@ -249,14 +249,18 @@
 </ul>
 <h2 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h2><ul>
 <li><p>while循环</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>()&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="keyword">true</span>)&#123;<span class="comment">//死循环</span></span><br><span class="line">    <span class="comment">//服务器监听响应</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>()&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="keyword">true</span>)&#123;<span class="comment">//死循环</span></span><br><span class="line">    <span class="comment">//服务器监听响应</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>do..while循环</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;<span class="keyword">while</span>()<span class="comment">//循环体至少会执行一次</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;<span class="keyword">while</span>()<span class="comment">//循环体至少会执行一次</span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>for循环</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(初始化;布尔表达式;更新)&#123;</span><br><span class="line">    <span class="comment">//初始化语句可以是空语句，也可以是一种类型多个变量 </span></span><br><span class="line">    <span class="comment">//布尔表达式和更新也可以是空语句，即for(;;)&#123;&#125;是死循环</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(初始化;布尔表达式;更新)&#123;</span><br><span class="line">    <span class="comment">//初始化语句可以是空语句，也可以是一种类型多个变量 </span></span><br><span class="line">    <span class="comment">//布尔表达式和更新也可以是空语句，即for(;;)&#123;&#125;是死循环</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>增强for循环</p>
 <p>Java5引入的一种主要用于数组或者集合的增强型for循环</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(声明语句:表达式)&#123;</span><br><span class="line">    <span class="comment">//声明语句：声明新的局部变量，变量的类型必须和数组元素的类型匹配。作用域限定值循环语句块，其值与此时数组元素的值相等</span></span><br><span class="line">    <span class="comment">//表达式：是要访问的数组名，或者是返回值为数组的方法</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//更详细的在java集合里面写</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(声明语句:表达式)&#123;</span><br><span class="line">    <span class="comment">//声明语句：声明新的局部变量，变量的类型必须和数组元素的类型匹配。作用域限定值循环语句块，其值与此时数组元素的值相等</span></span><br><span class="line">    <span class="comment">//表达式：是要访问的数组名，或者是返回值为数组的方法</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//更详细的在java集合里面写</span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>break和continue</p>
 <p>break：退出整个循环</p>
 <p>continue：退出本轮循环</p>
@@ -392,7 +396,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
