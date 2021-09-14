@@ -158,6 +158,157 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/28/java%E6%B3%9B%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/touXiang.jpg">
+      <meta itemprop="name" content="Bin">
+      <meta itemprop="description" content="早日发财！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BinSpace">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/28/java%E6%B3%9B%E5%9E%8B/" class="post-title-link" itemprop="url">java泛型</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-08-28 19:52:10 / 修改时间：22:42:53" itemprop="dateCreated datePublished" datetime="2021-08-28T19:52:10+01:00">2021-08-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>泛型</p>
+</blockquote>
+<h2 id="一-为什么有泛型"><a href="#一-为什么有泛型" class="headerlink" title="一. 为什么有泛型"></a>一. 为什么有泛型</h2><p>泛型：标签</p>
+<h3 id="1-1-举例"><a href="#1-1-举例" class="headerlink" title="1.1 举例"></a>1.1 举例</h3><p>中药店，每个抽屉外面贴着标签<br>超市购物架上很多瓶子，每个瓶子装的是什么，有标签。</p>
+<h3 id="1-2-泛型的设计背景"><a href="#1-2-泛型的设计背景" class="headerlink" title="1.2 泛型的设计背景"></a>1.2 泛型的设计背景</h3><p>集合容器类在设计阶段/声明阶段不能确定这个容器到底实际存的是什么类型的对象，<strong>所以在JDK1.5之前只能把元素类型设计为Object，JDK1.5之后使用泛型来解决</strong>。因为这个时候除了元素的类型不确定，其他的部分是确定的，例如关于这个元素如何保存，如何管理等是确定的，因此此时<strong>把元素的类型设计成一个参数，这个类型参数叫做泛型</strong>。Collection&lt; E &gt;，List&lt; E &gt;，ArrayList&lt; E &gt;，这个&lt; E &gt;就是类型参数，即泛型。</p>
+<h3 id="1-3-泛型的概念"><a href="#1-3-泛型的概念" class="headerlink" title="1.3 泛型的概念"></a>1.3 泛型的概念</h3><ul>
+<li>所谓泛型，就是允许在定义类、接口时通过一个标识，表示类中某个属性的类型或者是某个方法的返回值及参数类型。这个类型参数将在使用时（例如，继承或实现这个接口，用这个类型声明变量、创建对象时）确定（即传入实际的类型参数，也称为类型实参）。</li>
+<li>从JDK1.5以后，Java引入了“参数化类型（Parameterizedtype）”的概念，允许我们在创建集合时再指定集合元素的类型，正如：List&lt; String &gt;，这表明该List只能保存字符串类型的对象。</li>
+<li>JDK1.5改写了集合框架中的全部接口和类，为这些接口、类增加了泛型支持，从而可以在声明集合变量、创建集合对象时传入类型实参。</li>
+</ul>
+<h2 id="二-在集合中使用泛型"><a href="#二-在集合中使用泛型" class="headerlink" title="二. 在集合中使用泛型"></a>二. 在集合中使用泛型</h2><h3 id="2-1-在集合中使用泛型之前"><a href="#2-1-在集合中使用泛型之前" class="headerlink" title="2.1 在集合中使用泛型之前"></a>2.1 在集合中使用泛型之前</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ArrayList list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        <span class="comment">//需求：存放学生的成绩</span></span><br><span class="line">        list.add(<span class="number">78</span>);</span><br><span class="line">        list.add(<span class="number">87</span>);</span><br><span class="line">        list.add(<span class="number">99</span>);</span><br><span class="line">        list.add(<span class="number">65</span>);</span><br><span class="line">        <span class="comment">//问题一：类型不安全</span></span><br><span class="line">        list.add(<span class="string">&quot;Tom&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span>(Object score : list)&#123;</span><br><span class="line">            <span class="comment">//问题二：强转时可能出现类型转化异常</span></span><br><span class="line">            <span class="keyword">int</span> stuScore = (Integer)score;<span class="comment">//可能会有ClassCastException</span></span><br><span class="line">            System.out.println(stuScore);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-在集合中使用泛型"><a href="#2-2-在集合中使用泛型" class="headerlink" title="2.2 在集合中使用泛型"></a>2.2 在集合中使用泛型</h3><p>2.2.1  ArrayList</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        list.add(<span class="number">78</span>);</span><br><span class="line">        list.add(<span class="number">87</span>);</span><br><span class="line">        list.add(<span class="number">99</span>);</span><br><span class="line">        list.add(<span class="number">65</span>);</span><br><span class="line">        <span class="comment">//编译时，就会进行类型检查，保证数据的安全 下面这样会报错</span></span><br><span class="line">		<span class="comment">//list.add(&quot;Tom&quot;);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//方式一：</span></span><br><span class="line">        <span class="keyword">for</span>(Integer score :list)&#123;</span><br><span class="line">            <span class="comment">//避免了强转的操作</span></span><br><span class="line">            <span class="keyword">int</span> stuScore = score;</span><br><span class="line">            System.out.println(stuScore);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//方式二：</span></span><br><span class="line">        Iterator&lt;Integer&gt; iterator = list.iterator();</span><br><span class="line">        <span class="keyword">while</span>(iterator.hasNext())&#123;</span><br><span class="line">            <span class="keyword">int</span> stuScore = iterator.next();</span><br><span class="line">            System.out.println(stuScore);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-2-HashMap"><a href="#2-2-2-HashMap" class="headerlink" title="2.2.2 HashMap"></a>2.2.2 HashMap</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span></span>&#123;</span><br><span class="line">	Map&lt;String,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;String,Integer&gt;();</span><br><span class="line">	<span class="comment">//jdk7新特性：类型推断 后面的Hashmap&lt;&gt; 括号里不用写，默认和前面的一样</span></span><br><span class="line">	Map&lt;String,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">	map.put(<span class="string">&quot;Tom&quot;</span>,<span class="number">87</span>);</span><br><span class="line">    map.put(<span class="string">&quot;Tone&quot;</span>,<span class="number">81</span>);</span><br><span class="line">    map.put(<span class="string">&quot;Jack&quot;</span>,<span class="number">64</span>);</span><br><span class="line">	<span class="comment">//泛型的嵌套</span></span><br><span class="line">    Set&lt;Map.Entry&lt;String,Integer&gt;&gt; entry = map.entrySet();</span><br><span class="line">    Iterator&lt;Map.Entry&lt;String, Integer&gt;&gt; iterator = entry.iterator();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(iterator.hasNext())&#123;</span><br><span class="line">        Map.Entry&lt;String, Integer&gt; e = iterator.next();</span><br><span class="line">        String key = e.getKey();</span><br><span class="line">        Integer value = e.getValue();</span><br><span class="line">        System.out.println(key + <span class="string">&quot;----&quot;</span> + value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="三-自定义泛型结构"><a href="#三-自定义泛型结构" class="headerlink" title="三. 自定义泛型结构"></a>三. 自定义泛型结构</h2><p>泛型在继承上的体现</p>
+<p>通配符的使用</p>
+<p>泛型应用举例</p>
+<p>​     </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E4%BA%8C)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/touXiang.jpg">
+      <meta itemprop="name" content="Bin">
+      <meta itemprop="description" content="早日发财！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BinSpace">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E4%BA%8C)/" class="post-title-link" itemprop="url">数据结构(二)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-28 00:38:14" itemprop="dateCreated datePublished" datetime="2021-08-28T00:38:14+01:00">2021-08-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-27 20:51:07" itemprop="dateModified" datetime="2021-08-27T20:51:07+01:00">2021-08-27</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>树</p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/08/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E4%BA%8C)/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%BB%83%E4%B9%A0%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -182,14 +333,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-08-24 01:37:19" itemprop="dateCreated datePublished" datetime="2021-08-24T01:37:19+08:00">2021-08-24</time>
+              <time title="创建时间：2021-08-24 01:37:19" itemprop="dateCreated datePublished" datetime="2021-08-24T01:37:19+01:00">2021-08-24</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-25 22:56:42" itemprop="dateModified" datetime="2021-08-25T22:56:42+08:00">2021-08-25</time>
+                <time title="修改时间：2021-08-25 15:56:42" itemprop="dateModified" datetime="2021-08-25T15:56:42+01:00">2021-08-25</time>
               </span>
 
           
@@ -256,14 +407,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-08-24 01:01:25" itemprop="dateCreated datePublished" datetime="2021-08-24T01:01:25+08:00">2021-08-24</time>
+              <time title="创建时间：2021-08-24 01:01:25" itemprop="dateCreated datePublished" datetime="2021-08-24T01:01:25+01:00">2021-08-24</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-25 22:58:24" itemprop="dateModified" datetime="2021-08-25T22:58:24+08:00">2021-08-25</time>
+                <time title="修改时间：2021-08-26 16:15:18" itemprop="dateModified" datetime="2021-08-26T16:15:18+01:00">2021-08-26</time>
               </span>
 
           
@@ -329,10 +480,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-08-18 00:12:08 / 修改时间：03:22:25" itemprop="dateCreated datePublished" datetime="2021-08-18T00:12:08+08:00">2021-08-18</time>
+              <time title="创建时间：2021-08-18 00:12:08" itemprop="dateCreated datePublished" datetime="2021-08-18T00:12:08+01:00">2021-08-18</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-26 16:15:14" itemprop="dateModified" datetime="2021-08-26T16:15:14+01:00">2021-08-26</time>
+              </span>
 
           
 
@@ -397,16 +554,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-08-16 17:40:25" itemprop="dateCreated datePublished" datetime="2021-08-16T17:40:25+08:00">2021-08-16</time>
+              <time title="创建时间：2021-08-16 17:40:25 / 修改时间：22:35:20" itemprop="dateCreated datePublished" datetime="2021-08-16T17:40:25+01:00">2021-08-16</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-17 05:35:20" itemprop="dateModified" datetime="2021-08-17T05:35:20+08:00">2021-08-17</time>
-              </span>
 
           
 
@@ -472,14 +623,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-08-14 02:36:13" itemprop="dateCreated datePublished" datetime="2021-08-14T02:36:13+08:00">2021-08-14</time>
+              <time title="创建时间：2021-08-14 02:36:13" itemprop="dateCreated datePublished" datetime="2021-08-14T02:36:13+01:00">2021-08-14</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-16 04:34:21" itemprop="dateModified" datetime="2021-08-16T04:34:21+08:00">2021-08-16</time>
+                <time title="修改时间：2021-08-15 21:34:21" itemprop="dateModified" datetime="2021-08-15T21:34:21+01:00">2021-08-15</time>
               </span>
 
           
@@ -546,14 +697,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-08-12 23:36:20" itemprop="dateCreated datePublished" datetime="2021-08-12T23:36:20+08:00">2021-08-12</time>
+              <time title="创建时间：2021-08-12 23:36:20" itemprop="dateCreated datePublished" datetime="2021-08-12T23:36:20+01:00">2021-08-12</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-23 00:05:33" itemprop="dateModified" datetime="2021-08-23T00:05:33+08:00">2021-08-23</time>
+                <time title="修改时间：2021-08-30 22:32:59" itemprop="dateModified" datetime="2021-08-30T22:32:59+01:00">2021-08-30</time>
               </span>
 
           
@@ -620,14 +771,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-08-09 16:02:11" itemprop="dateCreated datePublished" datetime="2021-08-09T16:02:11+08:00">2021-08-09</time>
+              <time title="创建时间：2021-08-09 16:02:11" itemprop="dateCreated datePublished" datetime="2021-08-09T16:02:11+01:00">2021-08-09</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-12 23:35:51" itemprop="dateModified" datetime="2021-08-12T23:35:51+08:00">2021-08-12</time>
+                <time title="修改时间：2021-08-12 16:35:51" itemprop="dateModified" datetime="2021-08-12T16:35:51+01:00">2021-08-12</time>
               </span>
 
           
@@ -693,10 +844,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-08-09 01:45:25 / 修改时间：03:14:49" itemprop="dateCreated datePublished" datetime="2021-08-09T01:45:25+08:00">2021-08-09</time>
+              <time title="创建时间：2021-08-09 01:45:25" itemprop="dateCreated datePublished" datetime="2021-08-09T01:45:25+01:00">2021-08-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-08 20:14:49" itemprop="dateModified" datetime="2021-08-08T20:14:49+01:00">2021-08-08</time>
+              </span>
 
           
 
@@ -715,148 +872,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/08/09/%E5%BC%82%E5%B8%B8%E6%9C%BA%E5%88%B6/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/touXiang.jpg">
-      <meta itemprop="name" content="Bin">
-      <meta itemprop="description" content="早日发财！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BinSpace">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">数据结构</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-08-08 01:26:51 / 修改时间：03:27:09" itemprop="dateCreated datePublished" datetime="2021-08-08T01:26:51+08:00">2021-08-08</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>初步</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/08/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/07/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/touXiang.jpg">
-      <meta itemprop="name" content="Bin">
-      <meta itemprop="description" content="早日发财！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BinSpace">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/07/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">面向对象</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-08-07 20:21:17" itemprop="dateCreated datePublished" datetime="2021-08-07T20:21:17+08:00">2021-08-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-09 01:44:13" itemprop="dateModified" datetime="2021-08-09T01:44:13+08:00">2021-08-09</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>创建和初始化对象 封装 重载 继承 重写 多态 Instanceof 类型转换 Static 代码块 抽象类 接口 内部类</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/08/07/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -947,7 +962,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
